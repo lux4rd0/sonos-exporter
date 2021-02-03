@@ -1,0 +1,4 @@
+  - job_name: 'sonos-exporter'
+    scrape_interval: 30s
+    static_configs:
+    - targets: ['server:9012']
