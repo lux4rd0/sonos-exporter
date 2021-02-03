@@ -1,0 +1,15 @@
+services:
+  sonos-exporter:
+    command: -config /etc/telegraf/telegraf.conf -config-directory /etc/telegraf/telegraf.d
+    container_name: sonos-exporter
+    image: telegraf:latest
+    ports:
+    - protocol: tcp
+      published: 9012
+      target: 9012
+    restart: always
+    volumes:
+    - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    - ./sonos-exporter.sh:/etc/telegraf/sonos-exporter.sh:ro
+    - ./telegraf.d:/etc/telegraf/telegraf.d:ro
+version: '3.3'
